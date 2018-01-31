@@ -29,6 +29,10 @@ namespace DrosDbCreator
             {
                 foreach (var post in posts)
                 {
+                    var matches = regx.Matches(post.post_content);
+                    int mp3Order = 1, oggOrder = 1, wmaOrder = 1, rmOrder = 1;
+
+                    if(matches.Count == 0) continue;
 
                     var material = new Material
                     {
@@ -40,9 +44,6 @@ namespace DrosDbCreator
                     };
 
                     context.Materials.Add(material);
-
-                    var matches = regx.Matches(post.post_content);
-                    int mp3Order = 1, oggOrder = 1, wmaOrder = 1, rmOrder = 1;
 
                     foreach (Match match in matches)
                     {
@@ -97,18 +98,20 @@ namespace DrosDbCreator
                         }
                     }
 
-                    WriteLine($"{material.Title}");
-                    foreach (var link in material.Links.OrderBy(x => x.AudioType).ThenBy(x => x.Order))
-                    {
-                        WriteLine($"{link.Order} {link.Content} {link.AudioType.ToString()}");
-                    }
+                    //WriteLine($"{material.Title}");
+                    //foreach (var link in material.Links.OrderBy(x => x.AudioType).ThenBy(x => x.Order))
+                    //{
+                    //    WriteLine($"{link.Order} {link.Content} {link.AudioType.ToString()}");
+                    //}
 
-                    WriteLine($"{material.Authors.FirstOrDefault()?.Author.Name}");
-                    foreach (var tag in material.Tags)
-                    {
-                        WriteLine($"{tag.Tag.Name} ");
-                    }
+                    //WriteLine($"{material.Authors.FirstOrDefault()?.Author.Name}");
+                    //foreach (var tag in material.Tags)
+                    //{
+                    //    WriteLine($"{tag.Tag.Name} ");
+                    //}
                 }
+
+                await context.SaveChangesAsync();
             }
 
             ReadKey();
