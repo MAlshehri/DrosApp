@@ -19,7 +19,7 @@ namespace DrosDbCreator
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=dros.db");
+            optionsBuilder.UseSqlite("Data Source=dros2.db");
             base.OnConfiguring(optionsBuilder);
         }
 

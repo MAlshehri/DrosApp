@@ -21,6 +21,8 @@ namespace Dros.Data.Models
         Mp3 = 1,
         Ogg,
         Wma,
-        Rm
+        Rm,
+        Iso,
+        Unknown
     }
 }
