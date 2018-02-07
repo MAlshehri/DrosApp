@@ -29,4 +29,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="dros.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dros.zip" />
+  </ItemGroup>
 </Project>
