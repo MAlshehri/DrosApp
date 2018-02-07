@@ -13,13 +13,13 @@ namespace DrosDbCreator
     {
         public DbSet<Material> Materials { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Link> Links { get; set; }
+        public DbSet<Url> Urls { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=dros2.db");
+            optionsBuilder.UseSqlite("Data Source=dros.db");
             base.OnConfiguring(optionsBuilder);
         }
 

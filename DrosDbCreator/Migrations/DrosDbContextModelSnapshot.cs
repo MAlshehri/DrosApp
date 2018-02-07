@@ -22,7 +22,7 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.Author", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("CreatedOn");
@@ -38,7 +38,7 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("CreatedOn");
@@ -52,35 +52,9 @@ namespace DrosDbCreator.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Dros.Data.Models.Link", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AudioType");
-
-                    b.Property<string>("Content");
-
-                    b.Property<long>("ContentLength");
-
-                    b.Property<DateTimeOffset>("CreatedOn");
-
-                    b.Property<Guid>("MaterialId");
-
-                    b.Property<int>("Order");
-
-                    b.Property<DateTimeOffset>("UpdatedOn");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaterialId");
-
-                    b.ToTable("Links");
-                });
-
             modelBuilder.Entity("Dros.Data.Models.Material", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Body");
@@ -100,9 +74,9 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.MaterialAuthor", b =>
                 {
-                    b.Property<Guid>("MaterialId");
+                    b.Property<string>("MaterialId");
 
-                    b.Property<Guid>("AuthorId");
+                    b.Property<string>("AuthorId");
 
                     b.HasKey("MaterialId", "AuthorId");
 
@@ -113,9 +87,9 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.MaterialCategory", b =>
                 {
-                    b.Property<Guid>("MaterialId");
+                    b.Property<string>("MaterialId");
 
-                    b.Property<Guid>("CategoryId");
+                    b.Property<string>("CategoryId");
 
                     b.HasKey("MaterialId", "CategoryId");
 
@@ -126,9 +100,9 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.MaterialTag", b =>
                 {
-                    b.Property<Guid>("MaterialId");
+                    b.Property<string>("MaterialId");
 
-                    b.Property<Guid>("TagId");
+                    b.Property<string>("TagId");
 
                     b.HasKey("MaterialId", "TagId");
 
@@ -139,7 +113,7 @@ namespace DrosDbCreator.Migrations
 
             modelBuilder.Entity("Dros.Data.Models.Tag", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("CreatedOn");
@@ -153,12 +127,30 @@ namespace DrosDbCreator.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Dros.Data.Models.Link", b =>
+            modelBuilder.Entity("Dros.Data.Models.Url", b =>
                 {
-                    b.HasOne("Dros.Data.Models.Material", "Material")
-                        .WithMany("Links")
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AudioType");
+
+                    b.Property<long>("ContentLength");
+
+                    b.Property<DateTimeOffset>("CreatedOn");
+
+                    b.Property<string>("Link");
+
+                    b.Property<string>("MaterialId");
+
+                    b.Property<int>("Order");
+
+                    b.Property<DateTimeOffset>("UpdatedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("Urls");
                 });
 
             modelBuilder.Entity("Dros.Data.Models.MaterialAuthor", b =>
@@ -198,6 +190,13 @@ namespace DrosDbCreator.Migrations
                         .WithMany("Materials")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Dros.Data.Models.Url", b =>
+                {
+                    b.HasOne("Dros.Data.Models.Material", "Material")
+                        .WithMany("Links")
+                        .HasForeignKey("MaterialId");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,7 @@ namespace Dros.Data.Models
         public virtual ICollection<MaterialAuthor> Authors { get; set; }
         public virtual ICollection<MaterialTag> Tags { get; set; }
         public virtual ICollection<MaterialCategory> Categories { get; set; }
-        public virtual ICollection<Link> Links { get; set; }
+        public virtual ICollection<Url> Urls { get; set; }
 
         public DateTimeOffset CreatedOn { get; set; }
         public DateTimeOffset UpdatedOn { get; set; }
