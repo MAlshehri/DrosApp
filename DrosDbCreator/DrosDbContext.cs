@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Dros.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 namespace DrosDbCreator
 {

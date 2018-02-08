@@ -56,6 +56,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -82,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dros\Dros.csproj">
-      <Project>{1AC8F393-EB5E-472C-98F6-2ECA04701282}</Project>
+      <Project>{859437CC-06DE-4161-A308-1A63B197E77C}</Project>
       <Name>Dros</Name>
     </ProjectReference>
   </ItemGroup>
